@@ -33,14 +33,6 @@ public class MatchTest {
     }
 
     @Test
-    public void shouldReturnEmptyListBecauseOfNullString() {
-        List<String> inputList = null;
-        List<String> expected = List.of();
-        List<String> actual =  new Match<String>().findMatch(inputList, 3, (x -> x.contains("b")));
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void shouldFindTwoMatchInteger() {
         List<Integer> inputList = List.of(3, 56, 15, 32, 48, 4);
         List<Integer> expected = List.of(56, 32, 48);

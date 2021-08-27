@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 public class Match<T> {
 
     public List<T> findMatch(List<T> list, int n, Predicate<T> predicate) {
-        return list == null ? List.of() : list.stream().filter(predicate).limit(n).collect(Collectors.toList());
+        /*
+        Here must be the handling of exceptions, for example: list or predicate == null.
+         */
+        return list.stream().filter(predicate).limit(n).collect(Collectors.toList());
     }
 }
