@@ -49,7 +49,7 @@ public class MatchTest {
     }
 
     @Test
-    public void shouldFindNothingInteger1() {
+    public void shouldFindNothingInteger() {
         List<Integer> inputList = List.of(3, 56, 15, 32, 48, 4);
         List<Integer> expected = List.of();
         List<Integer> actual =  new Match<Integer>().findMatch(inputList, 0, (x -> x % 2 == 0));
@@ -65,7 +65,7 @@ public class MatchTest {
     }
 
     @Test
-    public void shouldFindNothingInteger() {
+    public void shouldFindNothingBecauseEmptyInteger() {
         List<Integer> inputList = List.of();
         List<Integer> expected = List.of();
         List<Integer> actual =  new Match<Integer>().findMatch(inputList, 3, (x -> x % 2 == 0));
