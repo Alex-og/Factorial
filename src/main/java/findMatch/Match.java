@@ -12,4 +12,8 @@ public class Match<T> {
          */
         return list.stream().filter(predicate).limit(n).collect(Collectors.toList());
     }
+
+    public Optional<List<T>> findMatchWithOptional(List<T> list, int n, Predicate<T> predicate) {
+        return Optional.of(list.stream().filter(predicate).limit(n).collect(Collectors.toList()));
+    }
 }

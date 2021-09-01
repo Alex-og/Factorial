@@ -3,6 +3,7 @@ package findMatch;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +15,27 @@ public class MatchTest {
         List<String> expected = List.of("abc", "bca", "ba");
         List<String> actual =  new Match<String>().findMatch(inputList, 3, (x -> x.contains("b")));
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindTwoMatchWithOptionalString() {
+        List<String> inputList = List.of("abc", "cgc", "bca", "ba", "bbb");
+        List<String> expected = List.of("abc", "bca", "ba");
+        Optional<List<String>> optional = new Match<String>()
+                .findMatchWithOptional(inputList, 3, (x -> x.contains("b")));
+        List<String> actual =  optional.orElseThrow(NullPointerException::new);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldThrowNPEMatchWithOptionalString() {
+        List<String> inputList = null;
+        assertThrows(NullPointerException.class,
+                () -> {
+                    Optional<List<String>> optional = new Match<String>()
+                            .findMatchWithOptional(inputList, 3, (x -> x.contains("b")));
+                    List<String> actual =  optional.orElseThrow(NullPointerException::new);
+                });
     }
 
     @Test
